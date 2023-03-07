@@ -6,4 +6,97 @@
 
 body {
   font-family: 'kanit', sans-serif;
+  margin: 0;
+  background-color: black;
+  color: white;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.navigation {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-family: 'Helvetica', sans-serif;
+  margin: 16px;
+  width: 100%;
+}
+
+.list-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 24px;
+  max-height: fit-content;
+}
+
+.main-title {
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 6vw;
+}
+
+.sub-title {
+  text-transform: uppercase;
+  color: transparent;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 6vw;
+  -webkit-text-stroke: calc(300vw / 1010) white;
+  margin: -2.5px;
+
+}
+
+.navigation-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
