@@ -4,6 +4,16 @@
        url('kanit-bold.woff') format("woff");
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   font-family: 'kanit', sans-serif;
   margin: 0;
@@ -12,11 +22,12 @@ body {
 }
 
 #app {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   height: 100vh;
+  overflow: hidden;
 }
 
 .navigation {
@@ -25,7 +36,7 @@ body {
   justify-content: space-between;
   text-transform: uppercase;
   font-family: 'Helvetica', sans-serif;
-  margin: 16px;
+  padding: 16px;
   width: 100%;
 }
 
@@ -58,7 +69,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: 24px;
+  margin: 24px 0 32px;
   max-height: fit-content;
 }
 
@@ -79,13 +90,6 @@ body {
   font-size: 6vw;
   -webkit-text-stroke: calc(300vw / 1010) white;
   margin: -2.5px;
-
-}
-
-.navigation-item {
-  flex: 1;
-  display: flex;
-  justify-content: center;
 }
 
 .image-container {
