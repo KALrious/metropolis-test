@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'kanit';
-  src: url('kanit-bold.woff2') format("woff2"),
-       url('kanit-bold.woff') format("woff");
+  font-family: "kanit";
+  src: url("kanit-bold.woff2") format("woff2"),
+    url("kanit-bold.woff") format("woff");
 }
 
 html {
@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  font-family: 'kanit', sans-serif;
+  font-family: "kanit", sans-serif;
   margin: 0;
   background-color: black;
   color: white;
@@ -35,12 +35,25 @@ body {
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
-  font-family: 'Helvetica', sans-serif;
+  font-family: "Helvetica", sans-serif;
   padding: 16px;
   width: 100%;
+  animation-name: navigation-fade-in;
+  animation-duration: 0.5s;
 }
 
-.list-container{
+@keyframes navigation-fade-in {
+  from {
+    transform: translateY(-50%);
+    opacity: 0%;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 100%;
+  }
+}
+
+.list-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,6 +84,7 @@ body {
   width: 100%;
   margin: 24px 0 32px;
   max-height: fit-content;
+  overflow: hidden;
 }
 
 .main-title {
@@ -79,6 +93,18 @@ body {
   padding: 0;
   line-height: 1;
   font-size: 6vw;
+  animation: main-title-fade-in 1000ms;
+  animation-delay: 500ms;
+  animation-fill-mode: backwards;
+}
+
+@keyframes main-title-fade-in {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
 }
 
 .sub-title {
@@ -90,17 +116,85 @@ body {
   font-size: 6vw;
   -webkit-text-stroke: calc(300vw / 1010) white;
   margin: -2.5px;
+  animation: main-subtitle-fade-in 1000ms;
+  animation-delay: 700ms;
+  animation-fill-mode: backwards;
+}
+
+@keyframes main-subtitle-fade-in {
+  from {
+    opacity: 0%;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 100%;
+    transform: translateY(0%);
+  }
 }
 
 .image-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 8px;
   flex-grow: 1;
+}
+
+@media screen and (min-width: 769px) {
+  .image-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .image {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-image:after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 130%;
+  background-color: black;
+  top: 0;
+  right: 0;
+  animation: slide-in 1000ms cubic-bezier(.18,.71,.78,.67);
+  animation-fill-mode: both;
+  animation-delay: 200ms;
+}
+
+.overlay-image.one:after {
+  animation-duration: 900ms;
+  --rotate-offset: -10deg;
+  --x-offset: 30%;
+}
+
+.overlay-image.two:after {
+  animation-duration: 800ms;
+  --rotate-offset: 0deg;
+  --x-offset: 0px;
+}
+
+.overlay-image.three:after {
+  animation-duration: 900ms;
+  --rotate-offset: 10deg;
+  --x-offset: -10%;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(0%);
+     
+  }
+  to {
+    transform: rotate(var(--rotate-offset)) translateY(-110%) translateX(var(--x-offset));
+  }
 }
